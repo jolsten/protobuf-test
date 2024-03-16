@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+message Record {
+    int64 timestamp = 1;        // Nanoseconds since 1970-01-01
+    uint32 stream = 2;          // Unique ID per interleaved stream
+    uint32 length = 3;          // Total length in bits
+    uint32 word_size = 4;       // Size of data words in bits
+    repeated uint32 words = 5;  // Data words
+}
+
+message File {
+    repeated Record records = 1;
+    string class = 2;
+}
